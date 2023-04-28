@@ -4,6 +4,8 @@
 
 </div>
 
+This worker was derived from the [Bliper-Serverless](https://github.com/kodxana/Bliper-Serverless) project by [kodxana](https://github.com/kodxana)
+
 # Bliper-Serverless
 
 This API provides an image captioning service that takes an image or a zip file containing multiple images and generates a caption for each image. The captions are saved into text files named after the input images and packed into a zip file for download.
