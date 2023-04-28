@@ -1,24 +1,25 @@
 <div align="center">
 
-<h1>Template | Worker</h1>
+<h1>BLIP | Worker</h1>
 
-[![Docker Image](https://github.com/runpod-workers/worker-template/actions/workflows/CD-docker_build.yml/badge.svg)](https://github.com/runpod-workers/worker-template/actions/workflows/CD-docker_build.yml)
-
-🚀 | A simple worker that can be used as a starting point to build your own custom RunPod Endpoint API worker.
 </div>
 
-## 📖 | Getting Started
+# Bliper-Serverless
 
-1. Clone this repository.
-2. Add your code to the `src` directory.
-3. Update the `handler.py` file to load models and process requests.
-4. Add any dependencies to the `requirements.txt` file.
-5. Update the `Dockerfile` to include any additional dependencies.
+This API provides an image captioning service that takes an image or a zip file containing multiple images and generates a caption for each image. The captions are saved into text files named after the input images and packed into a zip file for download.
 
-### CI/CD
+## API Parameters
 
-This repository is setup to automatically build and push a docker image to the GitHub Container Registry. You will need to add your DockerHub credentials `DOCKERHUB_USERNAME` & `DOCKERHUB_TOKEN` to the GitHub Secrets for this repository to enable this functionality.
+The API accepts the following parameters:
 
-## Best Practices
+- `data_url` (required, string): The URL of the image or zip file containing multiple images to be captioned. The supported image formats are JPEG and PNG.
 
-Models should be part of your docker image, this can be accomplished by either copying them into the image or downloading them during the build process.
+- `max_length` (optional, integer, default: 75): The maximum length of the generated captions. It should be a positive integer.
+
+- `min_length` (optional, integer, default: 5): The minimum length of the generated captions. It should be a positive integer.
+
+## API Output
+
+The API returns a JSON object containing the following fields:
+
+- `captions_zip_url`: The URL of the zip file containing the generated captions. Each caption is saved in a text file named after the input image (e.g., `input_image.jpg` will have a corresponding caption file named `input_image.txt`).

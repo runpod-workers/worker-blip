@@ -25,8 +25,8 @@ ENV HF_HOME=/huggingface_cache
 
 # Create the necessary directories for the model
 COPY fetch_model.py /fetch_model.py
-RUN python /fetch_model.py \
-    rm /fetch_model.py
+RUN python /fetch_model.py
+RUN rm /fetch_model.py
 
 ADD src .
 
