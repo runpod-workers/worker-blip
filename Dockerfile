@@ -15,7 +15,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-COPY requirements.txt /requirements.txt
+COPY build/requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
     pip install -r /requirements.txt && \
     rm /requirements.txt
@@ -24,7 +24,7 @@ RUN pip install --upgrade pip && \
 ENV HF_HOME=/huggingface_cache
 
 # Create the necessary directories for the model
-COPY fetch_model.py /fetch_model.py
+COPY build/fetch_model.py /fetch_model.py
 RUN python /fetch_model.py
 RUN rm /fetch_model.py
 

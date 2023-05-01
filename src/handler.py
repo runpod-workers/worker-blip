@@ -1,13 +1,10 @@
-import sys
-import base64
-import io
 import os
 import zipfile
 import mimetypes
+
 import torch
 from PIL import Image
-from torchvision.transforms.functional import InterpolationMode
-from torchvision import transforms
+
 from lavis.models import load_model_and_preprocess
 import runpod
 from runpod.serverless.utils import rp_download, rp_cleanup
@@ -15,6 +12,7 @@ from runpod.serverless.utils.rp_upload import files, upload_file_to_bucket
 from runpod.serverless.utils.rp_validator import validate
 
 from schemas import INPUT_SCHEMA
+
 
 # Set up the device
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
